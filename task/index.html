@@ -1,0 +1,71 @@
+
+<html>
+<head>
+    <title>table</title>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="data.json"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class = "container">
+        <div class = "table-responsive">
+            <h1>Pracowniki</h1>
+            <br>
+            <table class = "table table-boarder table-striped" id="emploee_table">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Company</th>
+                    <th>Note</th>
+                </tr>
+            </table>
+        </div>       
+    </div>
+    <script type="text/javascript" src="assets/js/table.js"></script>  
+</body>
+</html>
+<!-- <script type="text/javascript">
+      $(document).ready(function() {
+            $.getJSON("data.json", function(data) {
+                console.log(data);
+            });
+        });
+</script> -->
+
+
+
+
+        <!-- //      var employee_data ="";
+        // $.each(data,function(key,value){
+        //    employee_data +="<tr>";
+        //    employee_data +="<td>"+ value.id +"</td>";
+        //    employee_data +="<td>"+ value.firstName +"</td>";
+        //    employee_data +="<td>"+ value.lastName +"</td>";
+        //    employee_data +="<td>"+ value.dateOfBirth +"</td>";
+        //    employee_data +="<td>"+ value.company +"</td>";
+        //    employee_data +="<td>"+ value.note +"</td>";
+        //    employee_data +="</tr>";
+        // });
+        // $("#employee_table").append(employee_data);
+
+//     $.getJSON("ajax/data.json",function(data){
+//         // console.log(data);
+//         var employee_data ="";
+//         $.each(data,function(key,value){
+//            employee_data +="<tr>";
+//            employee_data +="<td>"+ value.id +"</td>";
+//            employee_data +="<td>"+ value.firstName +"</td>";
+//            employee_data +="<td>"+ value.lastName +"</td>";
+//            employee_data +="<td>"+ value.dateOfBirth +"</td>";
+//            employee_data +="<td>"+ value.company +"</td>";
+//            employee_data +="<td>"+ value.note +"</td>";
+//            employee_data +="</tr>";
+//         });
+//         $("#employee_table").append(employee_data);
+//     });
+// });
+     -->
