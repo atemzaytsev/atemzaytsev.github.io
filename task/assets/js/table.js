@@ -48,47 +48,55 @@ var data = [
     "note": 8
   }
 ]
-var x = document.createElement("INPUT");
-x.setAttribute("type", "datetime-local");
 var employee_data = "";
   $.each(data,function(key,value){
-    employee_data +="<tr>";
+    value.dateOfBirth = value.dateOfBirth.substring(0, value.dateOfBirth.indexOf(" "));
+    var birthDay = parseInt(value.dateOfBirth.split(".")[0]);
+    var birthMonth = parseInt(value.dateOfBirth.split(".")[1]);
+    var birthYear = parseInt(value.dateOfBirth.split(".")[2]);
+    
+    
+    var dateOfBirth = birthYear + "-" + (birthMonth < 10 ? "0" : '' ) + birthMonth + "-" +  (birthDay < 10 ? '0' : '') + birthDay; ;
+      employee_data +="<tr>";
       employee_data +="<td>"+ value.id +"</td>";
       employee_data +="<td>"+ value.firstName +"</td>";
       employee_data +="<td>"+ value.lastName +"</td>";
-      employee_data +="<td>"+value.dateOfBirth+ "</td>";
+      employee_data +="<td> <input type='date' value='"+ dateOfBirth + "'></td>";
       employee_data +="<td>"+ value.company +"</td>";
       employee_data +="<td>"+ value.note +"</td>";
       employee_data +="</tr>";
       });
     $("#employee_table").append(employee_data);
+    
 $(document).ready(function(){
-$(function(){
-$("#employee_table").tablesorter({   
-});
-});
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#employee_table tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 });
 
-$('#employee_table').each(function() {
+$("#employee_table").each(function() {
     var currentPage = 0;
     var numPerPage = 5;
     var $table = $(this);
-    $table.bind('repaginate', function() {
-        $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+    $table.bind("repaginate", function() {
+        $table.find("tbody tr").hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
     });
-    $table.trigger('repaginate');
-    var numRows = $table.find('tbody tr').length;
+    $table.trigger("repaginate");
+    var numRows = $table.find("tbody tr").length;
     var numPages = Math.ceil(numRows / numPerPage);
     var $pager = $('<div class="pager"></div>');
     for (var page = 0; page < numPages; page++) {
-        $('<span class="page-number"></span>').text(page + 1).bind('click', {
+        $('<span class="page-number"></span>').text(page + 1).bind("click", {
             newPage: page
         }, function(event) {
-            currentPage = event.data['newPage'];
-            $table.trigger('repaginate');
-            $(this).addClass('active').siblings().removeClass('active');
-        }).appendTo($pager).addClass('clickable');
+            currentPage = event.data["newPage"];
+            $table.trigger("repaginate");
+            $(this).addClass("active").siblings().removeClass("active");
+        }).appendTo($pager).addClass("clickable");
     }
-    $pager.insertBefore($table).find('span.page-number:first').addClass('active');
+    $pager.insertAfter($table).find("span.page-number:first").addClass("active");
 });
 

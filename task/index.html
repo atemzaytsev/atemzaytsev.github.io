@@ -1,33 +1,35 @@
-
-<html>
+<!DOCTYPE html>
 <head>
   <title>table</title>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
   </script>
-  <script type="text/javascript" src="assets/js/lib/jquery.tablesorter.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js">
+ </script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
   <meta charset="UTF-8">
 </head>
 <body>
     <div class = "container">
         <div class = "table-responsive">
             <h1>Lista Pracowników</h1>
-            <table class = "table table-bordered table-striped tablesorter" id="employee_table">
+            <table data-toggle="table" class="table table-bordered table-striped " id="employee_table" data-sort-name="field_id" data-sort-order="desc">
+              <input  id="myInput" type="text" placeholder="Filter">
               <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birth Date</th>
-                    <th>Company</th>
-                    <th>Note</th>
+                    <th data-field="field_id" data-sortable="true">ID</th>
+                    <th data-field="f_name" data-sortable="true">First Name</th>
+                    <th data-field="l_name" data-sortable="true">Last Name</th>
+                    <th data-field="b_date" data-sortable="true">Birth Date</th>
+                    <th data-field="company" data-sortable="true">Company</th>
+                    <th data-field="note" data-sortable="true">Note</th>
                 </tr>
               </thead>
             </table>
-            <div class="pager"></div>
         </div>
+       
     </div>
     <script type="text/javascript" src="assets/js/table.js"></script>  
 </body>
