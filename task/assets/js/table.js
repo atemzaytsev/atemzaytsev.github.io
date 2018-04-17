@@ -48,6 +48,7 @@ var data = [
     "note": 8
   }
 ]
+//making date var
 var employee_data = "";
   $.each(data,function(key,value){
     value.dateOfBirth = value.dateOfBirth.substring(0, value.dateOfBirth.indexOf(" "));
@@ -55,7 +56,7 @@ var employee_data = "";
     var birthMonth = parseInt(value.dateOfBirth.split(".")[1]);
     var birthYear = parseInt(value.dateOfBirth.split(".")[2]);
     
-    
+//table construction
     var dateOfBirth = birthYear + "-" + (birthMonth < 10 ? "0" : '' ) + birthMonth + "-" +  (birthDay < 10 ? '0' : '') + birthDay; ;
       employee_data +="<tr>";
       employee_data +="<td>"+ value.id +"</td>";
@@ -67,7 +68,8 @@ var employee_data = "";
       employee_data +="</tr>";
       });
     $("#employee_table").append(employee_data);
-    
+
+//filtering    
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -76,7 +78,7 @@ $(document).ready(function(){
     });
   });
 });
-
+//pagination
 $("#employee_table").each(function() {
     var currentPage = 0;
     var numPerPage = 5;
