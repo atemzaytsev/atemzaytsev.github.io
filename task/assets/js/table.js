@@ -50,19 +50,15 @@ var data = [
 ]
 //making date var
 var employee_data = "";
-  $.each(data,function(key,value){
-    value.dateOfBirth = value.dateOfBirth.substring(0, value.dateOfBirth.indexOf(" "));
-    var birthDay = parseInt(value.dateOfBirth.split(".")[0]);
-    var birthMonth = parseInt(value.dateOfBirth.split(".")[1]);
-    var birthYear = parseInt(value.dateOfBirth.split(".")[2]);
-    
-//table construction
-    var dateOfBirth = birthYear + "-" + (birthMonth < 10 ? "0" : '' ) + birthMonth + "-" +  (birthDay < 10 ? '0' : '') + birthDay; ;
+$.each(data,function(key,value){ 
+var d = new Date(value.dateOfBirth.replace( /(\d{2}).(\d{2}).(\d{4})/, "$2.$1.$3"));
+var dateOfBirth = d.getFullYear()+"-" + ("00" + (d.getMonth() + 1)).slice(-2)+"-"+("00" + d.getDate()).slice(-2);
+var timeOfBirth = ("00" + d.getHours()).slice(-2) + ":" + ("00" + d.getMinutes()).slice(-2)       
       employee_data +="<tr>";
       employee_data +="<td>"+ value.id +"</td>";
       employee_data +="<td>"+ value.firstName +"</td>";
       employee_data +="<td>"+ value.lastName +"</td>";
-      employee_data +="<td> <input type='date' value='"+ dateOfBirth + "'></td>";
+      employee_data +="<td> <input type='date' value='"+ dateOfBirth + "'><input type='time' value='"+ timeOfBirth + "'></td>";
       employee_data +="<td>"+ value.company +"</td>";
       employee_data +="<td>"+ value.note +"</td>";
       employee_data +="</tr>";
@@ -79,6 +75,7 @@ $(document).ready(function(){
   });
 });
 //pagination
+$( document ).ready(function(){
 $("#employee_table").each(function() {
     var currentPage = 0;
     var numPerPage = 5;
@@ -86,7 +83,7 @@ $("#employee_table").each(function() {
     $table.bind("repaginate", function() {
         $table.find("tbody tr").hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
     });
-    $table.trigger("repaginate");
+$table.trigger("repaginate");
     var numRows = $table.find("tbody tr").length;
     var numPages = Math.ceil(numRows / numPerPage);
     var $pager = $('<div class="pager"></div>');
@@ -101,4 +98,4 @@ $("#employee_table").each(function() {
     }
     $pager.insertAfter($table).find("span.page-number:first").addClass("active");
 });
-
+});
