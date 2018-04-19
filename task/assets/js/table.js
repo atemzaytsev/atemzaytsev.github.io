@@ -53,7 +53,7 @@ var employee_data = "";
 $.each(data,function(key,value){ 
 var d = new Date(value.dateOfBirth.replace( /(\d{2}).(\d{2}).(\d{4})/, "$2.$1.$3"));
 var dateOfBirth = d.getFullYear()+"-" + ("00" + (d.getMonth() + 1)).slice(-2)+"-"+("00" + d.getDate()).slice(-2);
-var timeOfBirth = ("00" + d.getHours()).slice(-2) + ":" + ("00" + d.getMinutes()).slice(-2)       
+var timeOfBirth = ("00" + d.getHours()).slice(-2) + ":" + ("00" + d.getMinutes()).slice(-2);       
       employee_data +="<tr>";
       employee_data +="<td>"+ value.id +"</td>";
       employee_data +="<td>"+ value.firstName +"</td>";
@@ -70,7 +70,7 @@ $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#employee_table tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
 });
