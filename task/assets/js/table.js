@@ -48,7 +48,7 @@ var data = [
     "note": 8
   }
 ]
-//making date var
+//making date var and table construction
 var employee_data = "";
 $.each(data,function(key,value){ 
 var d = new Date(value.dateOfBirth.replace( /(\d{2}).(\d{2}).(\d{4})/, "$2.$1.$3"));
@@ -74,6 +74,7 @@ $(document).ready(function(){
     });
   });
 });
+
 //pagination
 $( document ).ready(function(){
 $("#employee_table").each(function() {
@@ -99,3 +100,5 @@ $table.trigger("repaginate");
     $pager.insertAfter($table).find("span.page-number:first").addClass("active");
 });
 });
+
+
