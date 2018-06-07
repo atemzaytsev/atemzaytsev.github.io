@@ -22,5 +22,10 @@
 #header h2 {
     margin-bottom: 0;
     height: 30px;
-    vertical-align: bottom
+    vertical-align: bottom;
+    width: 220px;
+    text-align: center;
+}
+span {
+    padding: 0;
 }

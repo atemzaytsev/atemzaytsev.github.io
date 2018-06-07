@@ -22,7 +22,7 @@ function Calendar(id, year, month) {
     }
     for (var i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
     document.querySelector('#' + id + ' tbody').innerHTML = calendar;
-    document.querySelector("#month").innerHTML = month[D.getMonth()] + ' ' + D.getFullYear();
+    document.querySelector("#date").innerHTML = month[D.getMonth()] + ' ' + D.getFullYear();
     document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
 
     document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
